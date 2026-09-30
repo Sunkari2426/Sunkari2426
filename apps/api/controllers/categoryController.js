@@ -1,0 +1,4 @@
+const Category=require('../models/ScrapCategory'), Rate=require('../models/ScrapRate');
+exports.list=async(req,res,next)=>{try{const categories=await Category.find({active:true}).lean();const rates=await Rate.find({active:true}).sort({effectiveFrom:-1}).lean();const newest={};rates.forEach(r=>{if(!newest[String(r.category)])newest[String(r.category)]=r.pricePerKg});res.json(categories.map(c=>({...c,pricePerKg:newest[String(c._id)]??null})))}catch(e){next(e)}};
+exports.create=async(req,res,next)=>{try{res.status(201).json(await Category.create(req.body))}catch(e){next(e)}};
+exports.setRate=async(req,res,next)=>{try{const {pricePerKg}=req.body;if(!Number.isFinite(pricePerKg)||pricePerKg<0)return res.status(400).json({error:'pricePerKg must be non-negative'});await Rate.updateMany({category:req.params.categoryId,active:true},{$set:{active:false}});res.status(201).json(await Rate.create({category:req.params.categoryId,pricePerKg}))}catch(e){next(e)}};

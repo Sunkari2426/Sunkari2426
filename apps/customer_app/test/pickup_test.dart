@@ -1,0 +1,1 @@
+import 'package:flutter_test/flutter_test.dart'; import 'package:scrap_mama/models/pickup.dart'; void main(){test('maps pickup json',(){final pickup=Pickup.fromJson({'_id':'1','status':'PENDING','finalTotal':0});expect(pickup.status,'PENDING');});}
