@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; import '../../widgets/status_chip.dart'; class PickupsPage extends StatelessWidget { const PickupsPage({super.key}); @override Widget build(BuildContext context)=>Scaffold(appBar:AppBar(title:const Text('Scrap Mama')),body:const Center(child:StatusChip(status:'Schedule your first pickup'))); }

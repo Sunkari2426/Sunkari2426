@@ -1,0 +1,1 @@
+class Pickup { final String id,status; final double total; const Pickup({required this.id,required this.status,required this.total}); factory Pickup.fromJson(Map<String,dynamic> j)=>Pickup(id:j['_id'] as String,status:j['status'] as String,total:(j['finalTotal']??0).toDouble()); }

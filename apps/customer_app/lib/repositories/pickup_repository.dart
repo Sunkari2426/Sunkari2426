@@ -1,0 +1,1 @@
+import '../models/pickup.dart'; import '../services/api_client.dart'; class PickupRepository { PickupRepository(this.client); final ApiClient client; Future<List<Pickup>> list()=>client.getPickups().then((v)=>v.map((e)=>Pickup.fromJson(e)).toList()); }

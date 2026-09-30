@@ -1,0 +1,2 @@
+import 'dart:convert'; import 'package:http/http.dart' as http; import '../config/app_config.dart';
+class ApiClient { ApiClient(this.token); final String? token; Future<List<dynamic>> getPickups() async { final r=await http.get(Uri.parse('${AppConfig.apiBaseUrl}/pickups'),headers:{if(token!=null)'Authorization':'Bearer $token'}); if(r.statusCode!=200)throw Exception('Could not load pickups'); return jsonDecode(r.body) as List<dynamic>; } }

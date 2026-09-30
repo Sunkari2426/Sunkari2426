@@ -1,0 +1,1 @@
+import 'package:flutter/material.dart'; class AuthPage extends StatelessWidget { const AuthPage({super.key}); @override Widget build(BuildContext context)=>const Scaffold(body:Center(child:Text('Sign in with OTP'))); }

@@ -1,0 +1,9 @@
+node_modules/
+.dart_tool/
+.packages
+build/
+coverage/
+.env
+apps/api/.env
+*.pem
+*.key
